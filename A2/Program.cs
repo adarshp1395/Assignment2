@@ -17,6 +17,20 @@ namespace A2
             Console.WriteLine("\n");
             Console.WriteLine("\n");
 
+            Console.WriteLine("Question 2");
+            string s = "University of South Florida";
+            string rs = StringReverse(s);
+            Console.WriteLine(rs);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Question 3");
+            int[] l2 = new int[] { 2, 2, 3, 5, 6 };
+            int sum = MinimumSum(l2);
+            Console.WriteLine(sum);
+            Console.WriteLine();
+            Console.WriteLine();
+
 
             /***************** Amena : question # 4 SORT STRING IN DECREASING ORDER OF FREQUENCY ****************/
             Console.WriteLine("Question 4");
@@ -129,30 +143,106 @@ namespace A2
                 return null;
             }
         }//end of targetrange program
+
+
+        // Code for Question 2 
         public static string StringReverse(string s)
         {
             try
             {
-                //write your code here
-            }
+                // string s = "University of South Florida";
+
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("The reverse of the entered string is : ");
+                string rs = "";
+                int n = s.Length;
+
+                string tempstring = "";
+
+                /* Using a for loop to traverse through the string and reverse the order of characters 
+                 * in each word within the string while still preserving whitespace and initial word order 
+                 */
+
+
+                for (int i = n - 1; i > -1; i--)
+                {
+                    // using if-else to test if there is a whitespace in the string
+
+                    if (s[i] == ' ')
+                    {
+                        rs = tempstring + " " + rs;
+                        tempstring = "";
+                    }
+                    else
+                    {
+                        tempstring += s[i];
+                    }
+                }
+                rs = tempstring + " " + rs;
+                // Console.WriteLine(rs);
+                return rs; // returning the value of the reversed string
+
+            } // end of try block
             catch (Exception)
             {
-                throw;
-            }
-            return null;
-        }
+                //throw;
+                Console.WriteLine("Error while computing the String Reverse");
+                return null;
+            } // end of catch block
+
+        }// end of string reverse function
         public static int MinimumSum(int[] l2)
         {
             try
             {
-                //Write your code here;
-            }
+
+                // Console.WriteLine(" ");
+
+                Console.Write("Sum of all elements stored in the array is :\n");
+
+                // int[] l2 = new int[] { 4, 5, 6, 9 };
+                int i, n, sum = 0;
+
+                n = l2.Length;
+
+                /* using for loop for checking if any two elements of the given array are equal
+                 * if they are equal, value will be increased by 1
+                 */
+
+                // first for loop
+                for (int p = 0; p < n - 1; p++)
+                {
+                    if (l2[p] == l2[p + 1])
+                    {
+                        l2[p + 1] = l2[p + 1] + 1;
+                    }
+
+                } // end of first for loop
+
+
+                /* using for loop to traverse through the array and calculate the sum of all elements
+                 */
+                // second for loop
+                for (i = 0; i < n; i++)
+                {
+                    sum += l2[i];
+                } // end of second for loop
+
+
+                return sum;
+
+            } // end of try block
             catch (Exception)
             {
-                throw;
-            }
-            return 0;
-        }
+                // throw;
+                Console.WriteLine("Error while computing the MinimumSum");
+                return 0;
+            } // end of catch block 
+
+        } // end of minimumsum function
+
+
         /************************** question no. 4 code **************************/
         /**sorting the given string in decreasing order of frequency of occurrence of each character.
          * start with initializing a dict and sorted string
