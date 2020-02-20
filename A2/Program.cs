@@ -17,6 +17,7 @@ namespace A2
             Console.WriteLine("\n");
             Console.WriteLine("\n");
 
+
             /***************** Amena : question # 4 SORT STRING IN DECREASING ORDER OF FREQUENCY ****************/
             Console.WriteLine("Question 4");
             string s2 = "-1-14";
@@ -54,7 +55,7 @@ namespace A2
             Console.WriteLine(ContainsDuplicate(arr, k));
 
             Console.WriteLine("Question 7");
-            int rodLength = 10;
+            int rodLength = 4;
             int priceProduct = GoldRod(rodLength);
             Console.WriteLine(priceProduct);
 
@@ -410,14 +411,14 @@ namespace A2
          * assignments dictionary is only passed so we can use it to assign values to the keys in the assign_numbers function
          * string i1,i2,op are input and output strings- main puzzle- they're only used in the problem_solved function to decode what number the two inputs and output represent
          */
-        static void Recursionfunction(int start, int depth, int maxdepth, String s, Dictionary<char, int> assignments, string i1, string i2, string op)
+        static void Recursionfunction(int start, int depth, int maxdepth, int iterationend, String s, Dictionary<char, int> assignments, string i1, string i2, string op)
         {
             try
             {
                 /**start with solved bool==false (defaultstate) so that we can change it to true and get out of the recursion */
                 bool solved = false;
                 /**this loop will become a nested version of itself via recursion and shall traverse through each digit from 0-10 (except in 1st run its 1)*/
-                for (int a = start; a < maxdepth; a++)
+                for (int a = start; a < iterationend; a++)
                 {
                     /*if string length>assignments dictionary with unique letter inside (we have found probable assignments for alphabets)
                      * - that string is ready to be tested as a  solution
@@ -430,12 +431,9 @@ namespace A2
                         solved = problemsolve(assignments, i1, i2, op);
                         if (solved == true)
                         {
-                            foreach (KeyValuePair<char, int> item in assignments)
-                            {
-                                Console.WriteLine("Alphabet: {0}, Assigned Value: {1}", item.Key, item.Value);
-                            }
-                            System.Environment.Exit(-1);
+                            return;
                         }
+
                     }
 
                     /*if you're at max depth, no need to call recursion again  
@@ -459,13 +457,13 @@ namespace A2
                     {
                         s = s.Substring(0, depth);
                         s += a.ToString();
-                        Recursionfunction(0, depth + 1, maxdepth, s, assignments, i1, i2, op);
+                        Recursionfunction(0, depth + 1, maxdepth, iterationend, s, assignments, i1, i2, op);
                     }
                     /*if its the first iteration of the current loop - depicted by a=0, directly add the digit a to string s as a character*/
                     if (depth < maxdepth - 1 && a == 0 && s.Contains(a.ToString()) == false)
                     {
                         s += a.ToString();
-                        Recursionfunction(0, depth + 1, maxdepth, s, assignments, i1, i2, op);
+                        Recursionfunction(0, depth + 1, maxdepth, iterationend, s, assignments, i1, i2, op);
                     }
                 }//end of for loop
             }//end of try
@@ -549,10 +547,13 @@ namespace A2
             if (a_ip1 + b_ip2 == c_op)
             {
                 solved = true;
-                Console.WriteLine("solved solution is :::");
                 Console.WriteLine(i1 + "  " + a_ip1);
                 Console.WriteLine(i2 + "  " + b_ip2);
                 Console.WriteLine(op + "  " + c_op);
+                foreach (KeyValuePair<char, int> item in assignments)
+                {
+                    Console.Write("{0}={1}  ", item.Key.ToString().ToUpper(), item.Value);
+                }
             }
             return solved;
         }
@@ -578,7 +579,8 @@ namespace A2
                 //initialize variable depth to keep a track of how deep we are inside the recursive loops and when to stop recursion
                 int depth = 0;
                 //this is based on the fact that each alphabet can take a max of 10 values (0,1,2,3,4,5,6,7,8,9)
-                int maxdepth = 10;
+                int maxdepth = assignments.Count;
+                int iterationend = 10;
                 /*handling the corner case of more than 10 unique alphabets - since only 1 digit is allowed
                 per alphabet and no repetitions - and we have total 10 single length digits in maths*/
                 if (assignments.Count > 10)
@@ -593,7 +595,7 @@ namespace A2
                 /*pass start as 1 since no number is allowed to be started with a zero 
                 and since our unique assignments always has the
                 answer as first number 1 so start first loop by 1 and remaining can be 0*/
-                Recursionfunction(1, depth, maxdepth, s, assignments, i1, i2, op);
+                Recursionfunction(1, depth, maxdepth, iterationend, s, assignments, i1, i2, op);
             }//end of try
 
             catch (Exception)
