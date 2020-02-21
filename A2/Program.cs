@@ -7,98 +7,127 @@ namespace A2
     class Program
     {
         static void Main(string[] args)
-        {
-            /*************Amena: question # 1 - INPUTS GO HERE - INITIAL AND FINAL INDEX OF GIVEN TARGET O(N) *************/
-            Console.WriteLine("Question 1");
-            int[] l1 = new int[] { 5, 6, 6, 9, 9, 12 };
-            int target = 6;
-            int[] r = TargetRange(l1, target);
-            DisplayArray(r);
-            Console.WriteLine("\n");
-            Console.WriteLine("\n");
+        { 
+                /************* :order checked O(n): question # 1 - INPUTS GO HERE - INITIAL AND FINAL INDEX OF GIVEN TARGET O(N) **************/
+                Console.WriteLine("Question 1");
+                int[] l1 = new int[] { 5, 6, 6, 9, 9, 12 };
+                int target = 9;
+                int[] r = TargetRange(l1, target);
+                Console.WriteLine("the given array is: ");
+                DisplayArray(l1);
+                Console.WriteLine("the given target is: " + target);
+                Console.WriteLine("Initial and Final index of given target in array: ");
+                DisplayArray(r);
+                Console.WriteLine("\n");
 
-            Console.WriteLine("Question 2");
-            string s = "University of South Florida";
-            string rs = StringReverse(s);
-            Console.WriteLine(rs);
-            Console.WriteLine();
-            Console.WriteLine();
+                /**************** :order checked O(a+b):question # 2 - REVERSING EACH WORD WITHIN A SENTENCE O(N) *******************/
+                Console.WriteLine("Question 2");
+                string s = "University of South Florida";
+                string rs = StringReverse(s);
+                Console.WriteLine("the given string is: " + s);
+                Console.WriteLine("Reversed string is: " + rs);
+                Console.WriteLine("\n");
 
-            Console.WriteLine("Question 3");
-            int[] l2 = new int[] { 2, 2, 3, 5, 6 };
-            int sum = MinimumSum(l2);
-            Console.WriteLine(sum);
-            Console.WriteLine();
-            Console.WriteLine();
+                /**************** :order checked (n) : question # 3 - MAKE ELEMENTS DISTINCT WITH MINIMUM SUM O(N)  *******************/
+                Console.WriteLine("Question 3");
+                int[] l2 = new int[] { 2, 2, 3, 4, 6 };
+                Console.WriteLine("the given array is: ");
+                DisplayArray(l2);
+                Console.WriteLine("the updated array is: ");
+                int sum = MinimumSum(l2);
+                Console.WriteLine("the minimum sum is: " + sum);
+                Console.WriteLine("\n");
 
+                /*****************  : question # 4 SORT STRING IN DECREASING ORDER OF FREQUENCY ****************/
+                Console.WriteLine("Question 4");
+                string s2 = "Yykkxyy";
+                string sortedString = FreqSort(s2);
+                Console.WriteLine("the given string is: " + s2);
+                Console.WriteLine("The sorted string is: " + sortedString);
+                Console.WriteLine("\n");
 
-            /***************** Amena : question # 4 SORT STRING IN DECREASING ORDER OF FREQUENCY ****************/
-            Console.WriteLine("Question 4");
-            string s2 = "-1-14";
-            string sortedString = FreqSort(s2);
-            Console.WriteLine(sortedString);
-            Console.WriteLine("\n");
-            Console.WriteLine("\n");
+                /**************** QUESTION # 5 - COMPUTER INTERSECTION OF TWO ARRAYS DICTIONARY - O(N), O(N LOG N)**********************/
+                Console.WriteLine("Question 5-Part 1");
+                int[] nums1 = { 3, 6, 2 };
+                int[] nums2 = { 6, 3, 6, 7, 3 };
+                int[] intersect1 = Intersect1(nums1, nums2);
+                Console.WriteLine("the first given array is: ");
+                DisplayArray(nums1);
+                Console.WriteLine("the second given array is: ");
+                DisplayArray(nums2);
+                Console.WriteLine("Part 1- Intersection of two arrays is: ");
+                DisplayArray(intersect1);
+                Console.WriteLine("\n");
 
+                Console.WriteLine("Question 5-Part 2");
+                int[] intersect2 = Intersect2(nums1, nums2);
+                Console.WriteLine("Part 2- Intersection of two arrays is: ");
+                DisplayArray(intersect2);
+                Console.WriteLine("\n");
 
+                /*************** QUESTION # 6 -order of N - ARRAY OF CHARACTERS, INT K, BETWEEN 2 CHAR,  DISTANCE=K -USE DICTIONARY O(N) *********/
+                Console.WriteLine("Question 6");
+                char[] arr = new char[] { 'k', 'y', 'k', 'k' };
+                int k = 1;
+                Console.WriteLine("the given array is: ");
+                DisplayCharArray(arr);
+                Console.WriteLine("the given distance k is: " + k);
+                Console.WriteLine("output is:  " + ContainsDuplicate(arr, k));
+                Console.WriteLine("\n");
 
+                /************ QUESTION # 7 GOLD BAR LENGTH N, PRICE N, VALUE OF COLLECTION V= PRICE P OF EACH BAR*PRICE P OF INDIVIDUAL PIECES*/
+                Console.WriteLine("Question 7");
+                int rodLength = 10;
+                Console.WriteLine("given rod length is : " + rodLength);
+                Console.WriteLine("optimal combination is : ");
+                int priceProduct = GoldRod(rodLength);
+                Console.WriteLine("Value of product is: "+priceProduct);
+                Console.WriteLine("\n");
 
-            Console.WriteLine("Question 5-Part 1");
-            int[] nums1 = { 1, 2, 2, 1 };
-            int[] nums2 = { 2, 2 };
-            int[] intersect1 = Intersect1(nums1, nums2);
-            for (int i = 0; i < intersect1.Length; i++)
-            {
-                Console.WriteLine(intersect1);
+                /******************** Amena  question #8 Inputs go here ********************/
+                Console.WriteLine("Question 8");
+                string[] userDict = new string[] { "rocky", "usf", "hello", "apple" };
+                string keyword = "rxcky";
+                Console.WriteLine("Given Dictionary for words is: ");
+                DisplayStringArray(userDict);
+                Console.WriteLine("Given keyword is: " + keyword);
+                Console.WriteLine(DictSearch(userDict, keyword));
+                Console.WriteLine("\n");
+
+                /****************** Amena: question # 9 Inputs go here ******************/
+                Console.WriteLine("Question 9");
+                string i1 = "uber";
+                string i2 = "cool";
+                string op = "uncle";
+                SolvePuzzle(i1, i2, op);
+
             }
-            Console.WriteLine("\n");
 
-            Console.WriteLine("Question 5-Part 2");
-            int[] intersect2 = Intersect2(nums1, nums2);
-            //Console.WriteLine("Part 2- Intersection of two arrays is: ");
-            //DisplayArray(intersect2);
-            for (int i = 0; i < intersect2.Length; i++)
+
+            public static void DisplayArray(int[] a)
             {
-                Console.WriteLine(intersect2);
+                foreach (int n in a)
+                {
+                    Console.Write(n + " ");
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine("\n");
-
-            Console.WriteLine("Question 6");
-            char[] arr = new char[] { 'a', 'g', 'h', 'a' };
-            int k = 3;
-            Console.WriteLine(ContainsDuplicate(arr, k));
-
-            Console.WriteLine("Question 7");
-            int rodLength = 4;
-            int priceProduct = GoldRod(rodLength);
-            Console.WriteLine(priceProduct);
-
-            /******************** Amena: question #8 Inputs go here ********************/
-            Console.WriteLine("Question 8");
-            string[] userDict = new string[] { "rocky", "usf", "hello", "apple" };
-            string keyword = "vpple";
-            Console.WriteLine(DictSearch(userDict, keyword));
-            Console.WriteLine("\n");
-            Console.WriteLine("\n");
-
-            /****************** Amena: question # 9 Inputs go here ******************/
-            Console.WriteLine("Question 9");
-            string i1 = "uber";
-            string i2 = "cool";
-            string op = "uncle";
-            SolvePuzzle(i1, i2, op);
-
-
-        }
-
-        public static void DisplayArray(int[] a)
-        {
-            foreach (int n in a)
+            public static void DisplayCharArray(char[] a)
             {
-                Console.Write(n + " ");
+                foreach (char n in a)
+                {
+                    Console.Write(n + " ");
+                }
+                Console.WriteLine();
             }
-        }
-
+            public static void DisplayStringArray(string[] a)
+            {
+                foreach (string n in a)
+                {
+                    Console.Write(n + " ");
+                }
+                Console.WriteLine();
+            }
         /************************** question no. 1 code **************************/
         /* LOGIC - - initialize start and end index and a flag to declare when the start is found
          * run a loop to traverse through the array lookng for the target
@@ -115,7 +144,14 @@ namespace A2
             int st_found = 0;
 
             try
-            {             /*the for loop traverses through each element looking for the target*/
+            {
+                //corner case of empty array
+                if (l1.Length == 0)
+                {
+                    Exception ex = new Exception("Empty Array - enter a filled array");
+                    throw ex;
+                }
+                /*the for loop traverses through each element looking for the target*/
                 for (int i = 0; i < l1.Length; i++)
                 {
                     /*the first time the target is found, st found==0 and is incremented to 1 which indicates st found 
@@ -137,38 +173,40 @@ namespace A2
                 int[] output = { st_index, end_index };
                 return output;
             }//end of try
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 Console.WriteLine("error occured computing targetrange");
                 return null;
             }
         }//end of targetrange program
 
-
-        // Code for Question 2 
+        /************************** question no. 2 code version two with Order of N where n is the length of string **************************/
+        /*initialize a string for answer and one temporary string to store individual words
+         * traverse the string from end to start - adding each alphabet to the temp string
+         * when the character is a "space", add the temp string at the start of the answer string and make temp blank again
+         * if i==0, it means its at the start of the string so you cant wait for the space now, just add space at the end of temp
+         * and add temp at the start of answer string
+         * **/
         public static string StringReverse(string s)
         {
             try
             {
+                if (s.Length == 0)
+                {
+                    Exception ex = new Exception("Empty String Entered");
+                    throw ex;
+                }
                 // string s = "University of South Florida";
-
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("The reverse of the entered string is : ");
                 string rs = "";
                 int n = s.Length;
-
                 string tempstring = "";
-
                 /* Using a for loop to traverse through the string and reverse the order of characters 
                  * in each word within the string while still preserving whitespace and initial word order 
                  */
-
-
                 for (int i = n - 1; i > -1; i--)
                 {
                     // using if-else to test if there is a whitespace in the string
-
                     if (s[i] == ' ')
                     {
                         rs = tempstring + " " + rs;
@@ -180,68 +218,57 @@ namespace A2
                     }
                 }
                 rs = tempstring + " " + rs;
-                // Console.WriteLine(rs);
                 return rs; // returning the value of the reversed string
-
             } // end of try block
-            catch (Exception)
+            catch (Exception ex)
             {
-                //throw;
+                Console.WriteLine(ex.Message);
                 Console.WriteLine("Error while computing the String Reverse");
                 return null;
             } // end of catch block
 
         }// end of string reverse function
+
+
+        /************************** question no. 3 code Time Complexity: O(n) **************************/
+        /*initialize an integer with sum=0 ->this will store the array sum
+         * traverse through the array - once the index is greater than 0, start comparing it to the previous index
+         * if 2 consecutive numbers are the same, increment the later number by 1
+         * add it to sum
+         * ***/
         public static int MinimumSum(int[] l2)
         {
             try
             {
-
-                // Console.WriteLine(" ");
-
-                Console.Write("Sum of all elements stored in the array is :\n");
-
-                // int[] l2 = new int[] { 4, 5, 6, 9 };
-                int i, n, sum = 0;
-
-                n = l2.Length;
-
-                /* using for loop for checking if any two elements of the given array are equal
-                 * if they are equal, value will be increased by 1
-                 */
-
-                // first for loop
-                for (int p = 0; p < n - 1; p++)
+                if (l2.Length == 0)//corner case
                 {
-                    if (l2[p] == l2[p + 1])
+                    Exception ex = new Exception("Empty Array - enter a filled array");
+                    throw ex;
+                }
+
+                int sum = 0;
+                for (int i = 0; i < l2.Length; i++)
+                {
+                    if (i > 0)
                     {
-                        l2[p + 1] = l2[p + 1] + 1;
+                        if (l2[i] == l2[i - 1])
+                        {
+                            l2[i] = l2[i] + 1;
+                        }
                     }
-
-                } // end of first for loop
-
-
-                /* using for loop to traverse through the array and calculate the sum of all elements
-                 */
-                // second for loop
-                for (i = 0; i < n; i++)
-                {
                     sum += l2[i];
-                } // end of second for loop
-
-
+                }
+                DisplayArray(l2);
+                Console.WriteLine();
                 return sum;
-
-            } // end of try block
-            catch (Exception)
+            }
+            catch (Exception ex)
             {
-                // throw;
+                Console.WriteLine(ex.Message);
                 Console.WriteLine("Error while computing the MinimumSum");
                 return 0;
-            } // end of catch block 
-
-        } // end of minimumsum function
-
+            }
+        }
 
         /************************** question no. 4 code **************************/
         /**sorting the given string in decreasing order of frequency of occurrence of each character.
@@ -253,10 +280,16 @@ namespace A2
             **/
         public static string FreqSort(string s)
         {
-            Dictionary<string, int> dict = new Dictionary<string, int>();
-            string sortedstring = "";
             try
             {
+                if (s.Length == 0)
+                {
+                    Exception ex = new Exception("Empty string");
+                    throw ex;
+                }
+                Dictionary<string, int> dict = new Dictionary<string, int>();
+                string sortedstring = "";
+
                 for (int i = 0; i < s.Length; i++)
                 { /* if key not found add that key value else increment the value to show alphabet count*/
                     if (dict.ContainsKey(s[i].ToString()) == false)
@@ -282,138 +315,188 @@ namespace A2
                 }
                 return sortedstring;
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("error occured during computing question 4");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("error occured during computing freqSort");
                 return null;
             }
         }//end of FreqSort function
 
+        /************************** question no. 5 code - order should be less than n^2 **************************/
+
+        /*Method one of finding intersection is via traversing arrays
+         * sort both the arrays
+         * make an empty list to add common interactions to (interaction list)
+         * initialize variables i (for nums1) and j(for nums2)
+         * while either one of the arrays haven't reached its end, if the number in both the arrays is same,
+         * increment both indexes and add to the interaction list
+         * else increment the one with smaller number than the other one
+         */
         public static int[] Intersect1(int[] nums1, int[] nums2)
         {
             try
             {
-                List<int> ls =
+                if (nums1.Length == 0 || nums2.Length == 0)
+                {
+                    Exception ex = new Exception("Empty array error ");
+                    throw ex;
+                }
 
-                      new List<int>();
-
-
-
-                for (int i = 0; i < nums1.Length; i++)
-
-                    ls.Add(nums1[i]);
-
-
-
-                for (int i = 0; i < nums2.Length; i++)
-
-                    if (ls.Contains(nums2[i]))
-
-                        Console.Write(nums2[i] + " ");
+                Array.Sort(nums1);
+                Array.Sort(nums2);
+                List<int> interaction_list = new List<int> { };
+                int i = 0;
+                int j = 0;
+                while (i < nums1.Length && j < nums2.Length)
+                {
+                    if (nums1[i] == nums2[j])
+                    {
+                        interaction_list.Add(nums1[i]);
+                        i++; j++;
+                    }
+                    else if (nums1[i] < nums2[j])
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        j++;
+                    }
+                }
+                return interaction_list.ToArray();
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Error while computing the Intersect1");
+                return new int[] { };
             }
-            return new int[] { };
         }
+        /*Method two of finding intersection is using list*/
+        /**initialize a list and convert nums1 to that list
+         * initialize an interaction list to store interactions in
+         * for each integer in nums2, if it exists in num1, add it to the interaction list and
+         * remove it from the num1 list.
+         * convert interaction list to array
+         * ***/
         public static int[] Intersect2(int[] nums1, int[] nums2)
         {
             try
             {
-                Array.Sort(nums1);
-
-                Array.Sort(nums2);
-
-                int i = 0, j = 0;
-
-
-
-                while (i < nums1.Length && j < nums2.Length)
-
+                if (nums1.Length == 0 || nums2.Length == 0)
                 {
-
-                    if (nums1[i] < nums2[j])
-
-                        i++;
-
-                    else if (nums2[j] < nums1[i])
-
-                        j++;
-
-                    else
-
-                    {
-
-                        Console.Write(nums2[j++] + " ");
-
-                        i++;
-
-                    }
-
+                    Exception ex = new Exception("Empty array error ");
+                    throw ex;
                 }
+
+                List<int> n1_list = new List<int> { };
+                n1_list = nums1.ToList();
+                List<int> interaction_list = new List<int> { };
+                for (int a = 0; a < nums2.Length; a++)
+                {
+                    if (n1_list.Contains(nums2[a]))
+                    {
+                        interaction_list.Add(nums2[a]);
+                        n1_list.Remove(nums2[a]);
+                    }
+                }
+                return interaction_list.ToArray();
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Error while computing the intersect2");
+                return new int[] { };
             }
-            return new int[] { };
         }
+        /************************** question no. 6 code - The algorithm’s runtime complexity must be in the order of O(n) **************************/
+        /*intialize the boolean output as false and a dictionary to store the characters at
+         *dictionary key=characters and values =indexes
+         * if a character doesnt exist in dictionary add it and its index
+         * if its already in the dictionary, 1. check the difference of current index-its value
+         * if its ==k return true as output and break from the loop cause you dont need to traverse through it anymore
+         * if difference isn't==k, replace the value for the key with the current index
+         */
         public static bool ContainsDuplicate(char[] arr, int k)
         {
             try
             {
-
-                Dictionary<char, int> dict = new Dictionary<char, int>();
-
-                for (int i = 0; i < arr.Length; i++)
-
+                if (arr.Length == 0)
                 {
+                    Exception ex = new Exception("Empty array error ");
+                    throw ex;
+                }
 
-                    if (dict.ContainsKey(arr[i]))
-
+                bool output = false;
+                Dictionary<char, int> dict = new Dictionary<char, int> { };
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (dict.ContainsKey(arr[i]) == false)
                     {
-
-                        if (i - dict[arr[i]] <= k)
-
-                        {
-
-                            return true;
-
-                        }
-
+                        dict.Add(arr[i], i);
                     }
-
                     else
-
-                        dict[arr[i]] = i;
-
-                }//for i
-
-                return false;
-
-            }
-            catch (Exception)
+                    {
+                        if (i - dict[arr[i]] == k)
+                        {
+                            output = true;
+                            break;
+                        }
+                        else
+                        {
+                            dict[arr[i]] = i;
+                        }
+                    }
+                }//end of for
+                return output;
+            }//end of try
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Error while computing ContainsDuplicate");
+                return default;
             }
-        }
+        }//end of containsduplicate
 
+        /************************** question no. 7 code **************************/
+        /*check if the rod length is less than 1 - throw an exception -corner case
+         * if rod length is/remaining is less than 3, return that length
+         * if the rod length is 4, split it in twos and call the recursive goldrod function with length-2
+         * else, try going for 3s first (that will give the highest product) and go for 2's once length==4
+         * keep calling recursive function with decremented length of the rod as long as the length is greater than 3
+         * ***/
         public static int GoldRod(int rodLength)
         {
-            if (rodLength == 2) return 1;
-            if (rodLength == 3) return 2;
-            if (rodLength == 4) return 4;
-
-            return Program.GetRodMax(rodLength);
-        }
-
-        public static int GetRodMax(int rodLength)
-        {
-            if (rodLength == 2) return 2;
-            if (rodLength == 3) return 3;
-            if (rodLength == 4) return 4;
-            return 3 * Program.GetRodMax(rodLength - 3);
+            try
+            {
+                if (rodLength < 1)
+                {
+                    Exception ex = new Exception("Rod Length is less than 1, provide a positive number for rod length");
+                    throw ex;
+                }
+                if (rodLength <= 3)
+                {
+                    Console.WriteLine(rodLength);
+                    return rodLength;
+                }
+                else if (rodLength == 4)
+                {
+                    Console.Write("2*");
+                    return 2 * GoldRod(rodLength - 2);
+                }
+                else
+                {
+                    Console.Write("3*");
+                    return 3 * GoldRod(rodLength - 3);
+                }
+            }//end of try
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Error while computing GoldRod");
+            }
+            return 0;
         }
 
 
@@ -423,14 +506,21 @@ namespace A2
          * initialize keyword length variable
          * for each word in the user dictionary given, start with different=0
          * quick check - if the current word in user dict length is equal to the length of keyword and its not equal to keyword, proceed
-         * 
          * **/
         public static bool DictSearch(string[] userDict, string keyword)
         {
             try
             {
+                if (userDict.Length == 0 || keyword.Length == 0)
+                {
+                    Exception ex = new Exception("Empty user dictionary/keyword error ");
+                    throw ex;
+                }
+
+
                 int different = 0;//counter to set how many alphabets are different between dictionary word and keyword if its exactly one return true else false
                 int keyword_length = keyword.Length;
+                bool output = false;
                 /*for loop traverses through each element in a dictionary to compare it to keyword and check*/
                 for (int i = 0; i < userDict.Length; i++)
                 {/*if the length of keyword matches the length of a word in the dictionary-consider it*/
@@ -453,15 +543,17 @@ namespace A2
                     }
                     if (different == 1)
                     {
-                        return true;
+                        output = true;
                     }
                 }//end of first for loop
+                return output;
             }//end of try
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Error computing DictSearch");
+                return default;
             }
-            return default;
         }//end of DictSearch method
 
 
@@ -472,25 +564,32 @@ namespace A2
          this will also be used to cater for a corner case*/
         public static Dictionary<char, int> Populate_unique_alpabets(string i1, string i2, string op)
         {
-            //to contain all the unique alphabets and their assignments
-            Dictionary<char, int> assignments = new Dictionary<char, int>();
-            /*populating dictionary with unique alphabets - op first so that first char has to be 1
-             * no matter what - this way we save one whole nested loop recursion and hence time - that will
-             * be shown in main solve puzzle function
-             * */
-            string x = op + i1 + i2;
-            /*run a loop to iterate through the combo of 3 strings x
-             if the alphabet doesnt exist in dictionary assignments, add it 
-             else move on to next iteration*/
-            for (int a = 0; a < (i2.Length + i1.Length + op.Length); a++)
-            {
-                if (assignments.ContainsKey(x[a]) == false)
+            try
+            {             //to contain all the unique alphabets and their assignments
+                Dictionary<char, int> assignments = new Dictionary<char, int>();
+                /*populating dictionary with unique alphabets - op first so that first char has to be 1
+                 * no matter what - this way we save one whole nested loop recursion and hence time - that will
+                 * be shown in main solve puzzle function
+                 * */
+                string x = op + i1 + i2;
+                /*run a loop to iterate through the combo of 3 strings x
+                 if the alphabet doesnt exist in dictionary assignments, add it 
+                 else move on to next iteration*/
+                for (int a = 0; a < (i2.Length + i1.Length + op.Length); a++)
                 {
-                    assignments[x[a]] = x[a];
+                    if (assignments.ContainsKey(x[a]) == false)
+                    {
+                        assignments[x[a]] = x[a];
+                    }
                 }
+                /*return the populated dictionary*/
+                return assignments;
             }
-            /*return the populated dictionary*/
-            return assignments;
+            catch (Exception)
+            {
+                Console.WriteLine("an error occured while populating_unique alphabets - as a part of solved puzzle");
+                return null;
+            }
         }
 
 
@@ -566,25 +665,33 @@ namespace A2
         /*         *********        assign numbers function          ***************
          *         send the probable answer (as store answer) and the assignment dictionary to assign values to
          *         returns the nicely populated with assigned values dictionary
+         *         convert string to character array
+         *         run a loop through the assignments dictionary
+         *         store the key at each index in x
+         *         remove that key (since you wont be able to override its value
+         *         add that key with the corresponding int(its a character in the character array but we convert it to int by parsing)
+         *         back into the dictionary - viola you haev all your keys and corresponding values
          */
+
         public static Dictionary<char, int> assign_numbers(string store_answer, Dictionary<char, int> assignments)
         {
-            //convert string to character array
-            char[] ans_char_array = store_answer.ToCharArray();
-            char x;
-            /*run a loop through the assignments dictionary
-             *store the key at each index in x
-             * remove that key (since you wont be able to override its value
-             * add that key with the corresponding int(its a character in the character array but we convert it to int by parsing)
-             * back into the dictionary - viola you haev all your keys and corresponding values
-             */
-            for (int a = 0; a < assignments.Count; a++)
+            try
             {
-                x = assignments.ElementAt(a).Key;
-                assignments.Remove(x);
-                assignments.Add(x, Int32.Parse(ans_char_array[a].ToString()));
+                char[] ans_char_array = store_answer.ToCharArray();
+                char x;
+                for (int a = 0; a < assignments.Count; a++)
+                {
+                    x = assignments.ElementAt(a).Key;
+                    assignments.Remove(x);
+                    assignments.Add(x, Int32.Parse(ans_char_array[a].ToString()));
+                }
+                return assignments;
             }
-            return assignments;
+            catch (Exception)
+            {
+                Console.WriteLine("error occured while computing assign numbers - as a part of solve puzzle");
+                return null;
+            }
         }//end of assign numbers
 
 
@@ -598,54 +705,65 @@ namespace A2
          */
         public static bool problemsolve(Dictionary<char, int> assignments, string i1, string i2, string op)
         {
-            bool solved = false;
-            int pow = 0;
-            int a_ip1 = 0;
-            int b_ip2 = 0;
-            int c_op = 0;
-
-            //translating  the three words into the 3 numbers one by one 
-            /*for each character in the string, start with the right most (that depicts 10s)
-             * add it to the corresponding integer variable -a_ip1 for first input
-             * increase the power by 1 (units to 10s, tens to hundereds and hundereds to thousands and so on)
-             * gives the sum (integer) depicting the word
-             */
-            for (int x = i1.Length - 1; x >= 0; x--)
+            try
             {
-                a_ip1 += Convert.ToInt32(assignments[i1[x]] * Math.Pow(10, pow));
-                pow++;
-            }
+                bool solved = false;
+                int pow = 0;
+                int a_ip1 = 0;
+                int b_ip2 = 0;
+                int c_op = 0;
 
-            /*set power back to 0 (to get units) before starting it for next word */
-            pow = 0;
-            for (int x = i2.Length - 1; x >= 0; x--)
-            {
-                b_ip2 += Convert.ToInt32(assignments[i2[x]] * Math.Pow(10, pow));
-                pow++;
-            }
-
-
-            pow = 0;
-            for (int x = op.Length - 1; x >= 0; x--)
-            {
-                c_op += Convert.ToInt32(assignments[op[x]] * Math.Pow(10, pow));
-                pow++;
-            }
-            /*if sum of the two input integers depicted by words == output depicted by words - we have found the solution
-             *display it 
-             return true*/
-            if (a_ip1 + b_ip2 == c_op)
-            {
-                solved = true;
-                Console.WriteLine(i1 + "  " + a_ip1);
-                Console.WriteLine(i2 + "  " + b_ip2);
-                Console.WriteLine(op + "  " + c_op);
-                foreach (KeyValuePair<char, int> item in assignments)
+                //translating  the three words into the 3 numbers one by one 
+                /*for each character in the string, start with the right most (that depicts 10s)
+                 * add it to the corresponding integer variable -a_ip1 for first input
+                 * increase the power by 1 (units to 10s, tens to hundereds and hundereds to thousands and so on)
+                 * gives the sum (integer) depicting the word
+                 */
+                for (int x = i1.Length - 1; x >= 0; x--)
                 {
-                    Console.Write("{0}={1}  ", item.Key.ToString().ToUpper(), item.Value);
+                    a_ip1 += Convert.ToInt32(assignments[i1[x]] * Math.Pow(10, pow));
+                    pow++;
                 }
+
+                /*set power back to 0 (to get units) before starting it for next word */
+                pow = 0;
+                for (int x = i2.Length - 1; x >= 0; x--)
+                {
+                    b_ip2 += Convert.ToInt32(assignments[i2[x]] * Math.Pow(10, pow));
+                    pow++;
+                }
+
+
+                pow = 0;
+                for (int x = op.Length - 1; x >= 0; x--)
+                {
+                    c_op += Convert.ToInt32(assignments[op[x]] * Math.Pow(10, pow));
+                    pow++;
+                }
+                /*if sum of the two input integers depicted by words == output depicted by words - we have found the solution
+                 *display it 
+                 return true*/
+                if (a_ip1 + b_ip2 == c_op)
+                {
+                    solved = true;
+                    Console.WriteLine(i1 + "  " + a_ip1);
+                    Console.WriteLine(i2 + "  " + b_ip2);
+                    Console.WriteLine(op + "  " + c_op);
+                    foreach (KeyValuePair<char, int> item in assignments)
+                    {
+                        Console.Write("{0}={1}  ", item.Key.ToString().ToUpper(), item.Value);
+                    }
+                    Console.WriteLine();
+                }
+                return solved;
+            }//end of try
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("error computing problemsolve - as a part of solve puzzle");
+                return false;
             }
-            return solved;
+
         }
 
 
@@ -664,12 +782,20 @@ namespace A2
                 Console.WriteLine("input2 is: " + i2);
                 Console.WriteLine("output is: " + op);
 
+                if (i1.Length == 0 || i2.Length == 0 || op.Length == 0)
+                {
+                    Exception ex = new Exception("Empty inputs error ");
+                    throw ex;
+                }
+
+
                 /** step1 **/ //call function to populate distinct alphabets.
                 Dictionary<char, int> assignments = Populate_unique_alpabets(i1, i2, op);
                 //initialize variable depth to keep a track of how deep we are inside the recursive loops and when to stop recursion
                 int depth = 0;
-                //this is based on the fact that each alphabet can take a max of 10 values (0,1,2,3,4,5,6,7,8,9)
+                //depends on the unique alphabets we need to solve for 
                 int maxdepth = assignments.Count;
+                //this is based on the fact that each alphabet can take a max of 10 values (0,1,2,3,4,5,6,7,8,9)
                 int iterationend = 10;
                 /*handling the corner case of more than 10 unique alphabets - since only 1 digit is allowed
                 per alphabet and no repetitions - and we have total 10 single length digits in maths*/
@@ -688,12 +814,20 @@ namespace A2
                 Recursionfunction(1, depth, maxdepth, iterationend, s, assignments, i1, i2, op);
             }//end of try
 
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 Console.WriteLine();
             }
         }//end of solvepuzzle
 
 
+
+
+
+
     }
 }
+
+
+
