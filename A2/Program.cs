@@ -96,16 +96,16 @@ namespace A2
                 Console.WriteLine(DictSearch(userDict, keyword));
                 Console.WriteLine("\n");
 
-                /****************** Amena: question # 9 Inputs go here ******************/
-                Console.WriteLine("Question 9");
-                /*string i1 = "eager";
-                string i2 = "math";
-                string op = "treat";
-                */
-                string i1 = "uber";
-                string i2 = "cool";
-                string op = "uncle";
-                SolvePuzzle(i1, i2, op);
+            /****************** Amena: question # 9 Inputs go here ******************/
+            Console.WriteLine("Question 9");
+            /*string i1 = "eager";
+            string i2 = "math";
+            string op = "treat";
+            */
+            string i1 = "uber";
+            string i2 = "cool";
+            string op = "uncle";
+            SolvePuzzle(i1, i2, op);
 
 
         }
@@ -616,22 +616,6 @@ namespace A2
                 /**this loop will become a nested version of itself via recursion and shall traverse through each digit from 0-10 (except in 1st run its 1)*/
                 for (int a = start; a < iterationend; a++)
                 {
-                    /*if string length>assignments dictionary with unique letter inside (we have found probable assignments for alphabets)
-                     * - that string is ready to be tested as a  solution
-                     *put the assigned values in this variable assignments (assign_numbers)
-                     * call the function to check whether this is indeed our required solution (problem solve)
-                     *if solved is returned true - output the solution and exit the program*/
-                    if (s.Length >= assignments.Count)
-                    {
-                        assignments = assign_numbers(s, assignments);
-                        solved = problemsolve(assignments, i1, i2, op);
-                        if (solved == true)
-                        {
-                            //System.Environment.Exit(0);
-                            return;
-                        }
-
-                    }
 
                     /*if you're at max depth, no need to call recursion again  
                      * check whether a is already part of the string or not - only add if its not (dont want duplicate assignments)
@@ -661,6 +645,23 @@ namespace A2
                     {
                         s += a.ToString();
                         Recursionfunction(0, depth + 1, maxdepth, iterationend, s, assignments, i1, i2, op);
+                    }
+
+                    /*if string length>assignments dictionary with unique letter inside (we have found probable assignments for alphabets)
+                     * - that string is ready to be tested as a  solution
+                     *put the assigned values in this variable assignments (assign_numbers)
+                     * call the function to check whether this is indeed our required solution (problem solve)
+                     *if solved is returned true - output the solution and exit the program*/
+                    if (s.Length == assignments.Count)
+                    {
+                        assignments = assign_numbers(s, assignments);
+                        solved = problemsolve(assignments, i1, i2, op);
+                        if (solved == true)
+                        {
+                            //System.Environment.Exit(0);
+                            return;
+                        }
+
                     }
                 }//end of for loop
             }//end of try
