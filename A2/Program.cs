@@ -98,14 +98,14 @@ namespace A2
 
             /****************** Amena: question # 9 Inputs go here ******************/
             Console.WriteLine("Question 9");
-            /*string i1 = "eager";
+            string i1 = "eager";
             string i2 = "math";
             string op = "treat";
-            */
+            /*
             string i1 = "uber";
             string i2 = "cool";
             string op = "uncle";
-            SolvePuzzle(i1, i2, op);
+            */SolvePuzzle(i1, i2, op);
 
 
         }
@@ -621,27 +621,27 @@ namespace A2
                      * check whether a is already part of the string or not - only add if its not (dont want duplicate assignments)
                      * if this is not first iteration of the current loop, delete the character previously added and then add the new one
                      */
-                    if (depth == maxdepth  && a > 0 && s.Contains(a.ToString()) == false)
+                    if (depth == maxdepth-1  && a > 0 && s.Contains(a.ToString()) == false)
                     {
                         s = s.Substring(0, depth);
                         s += a.ToString();
                     }
                     /*if its the first iteration of the current loop - depicted by a=0, directly add the digit a to string s as a character*/
-                    if (depth == maxdepth  && a == 0 && s.Contains(a.ToString()) == false)
+                    if (depth == maxdepth-1  && a == 0 && s.Contains(a.ToString()) == false)
                     {
                         s += a.ToString();
                     }
                     /*if you're not at max depth, call recursion again, to solve for the next blank
                      * depth +1 to track that we are going to the next level
                      * if not the first iteration - delete the last addded character and then add the current digit as character*/
-                    if (depth < maxdepth  && a > 0 && s.Contains(a.ToString()) == false)
+                    if (depth < maxdepth-1  && a > 0 && s.Contains(a.ToString()) == false)
                     {
                         s = s.Substring(0, depth);
                         s += a.ToString();
                         Recursionfunction(0, depth + 1, maxdepth, iterationend, s, assignments, i1, i2, op);
                     }
                     /*if its the first iteration of the current loop - depicted by a=0, directly add the digit a to string s as a character*/
-                    if (depth < maxdepth  && a == 0 && s.Contains(a.ToString()) == false)
+                    if (depth < maxdepth-1  && a == 0 && s.Contains(a.ToString()) == false)
                     {
                         s += a.ToString();
                         Recursionfunction(0, depth + 1, maxdepth, iterationend, s, assignments, i1, i2, op);
