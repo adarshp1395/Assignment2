@@ -7,9 +7,11 @@ namespace A2
     class Program
     {
         static void Main(string[] args)
-        { 
-                /************* :order checked O(n): question # 1 - INPUTS GO HERE - INITIAL AND FINAL INDEX OF GIVEN TARGET O(N) **************/
-                Console.WriteLine("Question 1");
+
+        {
+
+            /************* :order checked O(n): question # 1 - INPUTS GO HERE - INITIAL AND FINAL INDEX OF GIVEN TARGET O(N) **************/
+            Console.WriteLine("Question 1");
                 int[] l1 = new int[] { 5, 6, 6, 9, 9, 12 };
                 int target = 9;
                 int[] r = TargetRange(l1, target);
@@ -84,7 +86,7 @@ namespace A2
                 Console.WriteLine("Value of product is: "+priceProduct);
                 Console.WriteLine("\n");
 
-                /******************** Amena  question #8 Inputs go here ********************/
+                /********************  question #8 Inputs go here ********************/
                 Console.WriteLine("Question 8");
                 string[] userDict = new string[] { "rocky", "usf", "hello", "apple" };
                 string keyword = "rxcky";
@@ -96,19 +98,20 @@ namespace A2
 
                 /****************** Amena: question # 9 Inputs go here ******************/
                 Console.WriteLine("Question 9");
-            /*string i1 = "eager";
-            string i2 = "math";
-            string op = "treat";
-            */
-            string i1 = "uber";
-            string i2 = "cool";
-            string op = "uncle";
-            SolvePuzzle(i1, i2, op);
-
-            }
+                /*string i1 = "eager";
+                string i2 = "math";
+                string op = "treat";
+                */
+                string i1 = "uber";
+                string i2 = "cool";
+                string op = "uncle";
+                SolvePuzzle(i1, i2, op);
 
 
-            public static void DisplayArray(int[] a)
+        }
+
+
+        public static void DisplayArray(int[] a)
             {
                 foreach (int n in a)
                 {
@@ -624,6 +627,7 @@ namespace A2
                         solved = problemsolve(assignments, i1, i2, op);
                         if (solved == true)
                         {
+                            //System.Environment.Exit(0);
                             return;
                         }
 
